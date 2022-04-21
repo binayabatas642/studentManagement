@@ -1,0 +1,56 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.add-student-form {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 15px;
+    min-width: 315px;
+    font-size: 16px;
+}
+
+.add-student-form > div {
+    flex-basis: 30%;
+}
+
+@media (max-width: 375px) {
+    .add-student-form {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .add-student-form > div {
+        flex-basis: 46%;
+    }
+}
+
+select {
+    outline: none;
+    border: none;
+    text-align: center;
+    background:none;
+    width: 60%;
+    border-radius: 6px;
+    margin: 3px 10px 10px 0px;
+    font-size: 16px;
+    padding: 3px 0px;
+    background-color: #F7F7FA;
+    box-shadow: 2px 2px 5px #b8b9be, -3px -3px 7px #fff;
+}
+
+table, th, td {
+    border: 1px solid rgb(168, 164, 164);
+    border-collapse: collapse;
+  }
+
+table {
+    width: 100%;
+}
+
+th, td {
+    width: 30%;
+    text-align: center;
+}

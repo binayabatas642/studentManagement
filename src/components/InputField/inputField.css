@@ -1,0 +1,25 @@
+.input {
+    outline: none;
+    width: 100%;
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+    border-color: rgb(146, 142, 142);
+    margin: 0px 10px 10px 0px;
+    padding: 5px 0px;
+    box-sizing: border-box;
+    background: none;
+    font-size: 16px;
+}
+
+.input:focus {
+    border-color: rgb(50, 47, 47);; 
+}   
+
+label {
+    color: rgb(88, 85, 85);
+    font-family: SofiaProMedium;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+}

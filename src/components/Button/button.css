@@ -1,0 +1,20 @@
+button {
+    cursor: pointer;
+    min-width: 100px;    
+    color: grey;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    font-family: SofiaProMedium;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    margin: 10px 10px;
+    border-radius: 40px;
+    background-color: #F7F7FA;
+    box-shadow: 2px 2px 5px #b8b9be, -3px -3px 7px #fff;
+}
+
+button:active {
+    box-shadow: none;
+}
