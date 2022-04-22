@@ -1,5 +1,5 @@
 import '../css/addStudentForm.css'
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
@@ -12,6 +12,7 @@ const AddStudentForm = () => {
 
     const dispatch = useDispatch();
 
+    const [parents, setParents] = useState("fathers_name")
     var [rows, setRows] = useState(['1']);
     
     const onSubmit = (data) => {
@@ -49,6 +50,27 @@ const AddStudentForm = () => {
         console.log(rows)
     }
 
+    // useEffect(() => {
+    //     setParents("fathers_name")
+    //     console.log(parents)
+    // },[])
+
+    const handleChange = (e) => {
+        console.log(e.target.value)
+        switch (e.target.value) {
+            case "Mother":
+                setParents("fathers_name")
+                break;
+            case "Father":
+                setParents("mothers_name")
+                break;
+            default:
+                break;
+        }
+
+        console.log(parents);
+    }
+
     const tableContent = rows.map(row => (
 
             <tr>
@@ -56,8 +78,9 @@ const AddStudentForm = () => {
                     <select 
                         {...register("parents_relationship", {required: true})} 
                         style={{margin: '0px', background:'none', width: '100%', borderRadius: '0px', boxShadow: 'none'}}
+                        onChange={handleChange}
                     >
-                        <option value="Father" selected>Father</option>
+                        <option value="Father">Father</option>
                         <option value="Mother">Mother</option>
                     </select>
                 </td>
@@ -65,7 +88,7 @@ const AddStudentForm = () => {
                     <input 
                         style={{border: 'none', width: '100%', outline: 'none', fontSize: '16px'}} 
                         type="text"
-                        {...register("parents_name")}
+                        {...register(parents)}
                         required
                     />
                 </td>

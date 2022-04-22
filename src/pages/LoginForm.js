@@ -17,7 +17,7 @@ const LoginForm = () => {
 
   return (
     <div>
-        <form class="form" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <InputField label="Email" type="text" inputName="email" register={register} required />
             <InputField label="Password" type="password" inputName="password" register={register} required /> 
         

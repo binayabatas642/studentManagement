@@ -12,7 +12,7 @@ const UserRegistrationForm = () => {
 
     return (
         <div>
-            <form class="form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <InputField label="First Name" type="text" inputName="firstName" register={register} required />
                 </div>
