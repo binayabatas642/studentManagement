@@ -120,6 +120,10 @@ const AddStudentForm = () => {
                         <InputField label="D.O.B." type="date" inputName="date_of_birth" register={register} required />
                     </div>
 
+                    {/* <div>
+                        Add gender select field
+                    </div> */}
+
                     <div className="dropdown">
                         <label>Current Grade</label> <br />
                         <select {...register("current_grade", {required: true})}>

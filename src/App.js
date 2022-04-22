@@ -10,6 +10,7 @@ import LoginForm from './pages/LoginForm';
 import AddStudentForm from './pages/AddStudentForm';
 import UserRegistrationForm from './pages/UserRegistrationForm';
 import StudentList from './pages/StudentList';
+import ViewSingleStudent from './pages/ViewSingleStudent';
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
             element={<LoginForm />}
           />
           <Route
-            path="/add-students"
+            path="/student-registration"
             exact
             element={<AddStudentForm />}
           />
@@ -35,6 +36,11 @@ const App = () => {
             path="/student-list"
             exact
             element={<StudentList />}
+          />
+          <Route
+            path="/view-student-info"
+            exact
+            element={<ViewSingleStudent />}
           />
         </Routes>
       </Router>
