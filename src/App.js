@@ -11,8 +11,11 @@ import AddStudentForm from './pages/AddStudentForm';
 import UserRegistrationForm from './pages/UserRegistrationForm';
 import StudentList from './pages/StudentList';
 import ViewSingleStudent from './pages/ViewSingleStudent';
+import InvoicePage from './pages/InvoicePage';
 
 const App = () => {
+
+  localStorage.setItem("name", "binaya")
   return (
     <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#F7F7FA', minHeight: '100vh'}}>
       <Router>
@@ -38,9 +41,14 @@ const App = () => {
             element={<StudentList />}
           />
           <Route
-            path="/view-student-info"
+            path="/view-student-info/:studentId"
             exact
             element={<ViewSingleStudent />}
+          />
+          <Route
+            path="/invoice"
+            exact
+            element={<InvoicePage />}
           />
         </Routes>
       </Router>

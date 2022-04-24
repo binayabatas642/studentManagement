@@ -20,7 +20,7 @@ const StudentList = () => {
           <p>Grade: {student.grade}</p>
         </div>
         <div className="modal-button">
-          <Link to={'/add-students'}>
+          <Link to={`/view-student-info/${student.id}`}>
             <Button buttonName="View Student Profile" />
           </Link>
         </div>
