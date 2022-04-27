@@ -14,8 +14,6 @@ import ViewSingleStudent from './pages/ViewSingleStudent';
 import InvoicePage from './pages/InvoicePage';
 
 const App = () => {
-
-  localStorage.setItem("name", "binaya")
   return (
     <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#F7F7FA', minHeight: '100vh'}}>
       <Router>

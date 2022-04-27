@@ -8,12 +8,12 @@ import Button from '../components/Button/Button';
 import { studentAdded } from '../redux/studentsSlice';
 
 const AddStudentForm = () => {
-    const { handleSubmit, register } = useForm();
+    const { handleSubmit, register, watch } = useForm();
 
     const dispatch = useDispatch();
+    let selectName = '';
 
-    const [parents, setParents] = useState("fathers_name")
-    var [rows, setRows] = useState(['1']);
+    let [rows, setRows] = useState(["Mother", "Father", "Grand-Father", "Grand-Mother","Brother","Sister"]);
     
     const onSubmit = (data) => {
         //e.preventDefault();
@@ -31,72 +31,41 @@ const AddStudentForm = () => {
                 )
             }
         }
-        
-    // const handleClick = () => {
-    //     var table = document.getElementById("table-parents")
-    //     var row = table.insertRow(-1)
-        
-    
-    //     var cell1 = row.insertCell(0);
-    //     var cell2 = row.insertCell(1);
-    //     var cell3 = row.insertCell(2);
-
-    //     cell1.innerHTML = '<select {...register("parents_relationship", {required: true})} style="margin:0px;background:none;width:100%;border-radius:0px;box-shadow:none;"><option value="Father">Father</option><option value="Mother">Mother</option></select>'
-    //     cell2.innerHTML = '<input style="border:none; width:100%; outline:none; fontSize:16px;" type="text" {...register("parents_name")} required />'
-    // }
 
     const handleClick = (int) => {
         setRows([...rows, int])
         console.log(rows)
     }
 
-    // useEffect(() => {
-    //     setParents("fathers_name")
-    //     console.log(parents)
-    // },[])
+    useEffect(() => {
+        selectName = watch(`relationship_row_0`)
+        console.log(selectName)
+    }, [])
 
-    const handleChange = (e) => {
-        console.log(e.target.value)
-        switch (e.target.value) {
-            case "Mother":
-                setParents("fathers_name")
-                break;
-            case "Father":
-                setParents("mothers_name")
-                break;
-            default:
-                break;
-        }
-
-        console.log(parents);
+    const handleSelect = (index) => {
+        selectName = watch(`relationship_row_${index}`)
+        console.log(selectName)
+        console.log(index)
     }
 
-    const tableContent = rows.map(row => (
-
-            <tr>
+    const tableContent = rows.map((row, index) => (
+            <tr key={index}>
                 <td>
-                    <select 
-                        {...register("parents_relationship", {required: true})} 
-                        style={{margin: '0px', background:'none', width: '100%', borderRadius: '0px', boxShadow: 'none'}}
-                        onChange={handleChange}
-                    >
-                        <option value="Father">Father</option>
-                        <option value="Mother">Mother</option>
-                    </select>
+                    <p style={{padding: '0px', margin: '2px'}}>{row}</p>
                 </td>
                 <td>
                     <input 
-                        style={{border: 'none', width: '100%', outline: 'none', fontSize: '16px'}} 
+                        style={{border: 'none', width: '100%', outline: 'none', fontSize: '16px', margin: '0px', padding: '0px'}} 
                         type="text"
-                        {...register(parents)}
+                        {...register(`${row}s_name`)}
                         required
                     />
                 </td>
                 <td>
                     <input 
-                        style={{border: 'none', width: '100%', outline: 'none', fontSize: '16px'}} 
+                        style={{border: 'none', width: '100%', outline: 'none', fontSize: '16px', margin: '0px', padding: '0px'}} 
                         type="number"
-                        {...register("contact_number")}
+                        {...register(`contact_number_${index}`)}
                         required
                     />
                 </td>
@@ -104,7 +73,7 @@ const AddStudentForm = () => {
         ))
 
     return (
-        <div>
+        <div style={{padding: '20px'}}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>Student Info</h2>
                 <div className="add-student-form">
@@ -120,9 +89,16 @@ const AddStudentForm = () => {
                         <InputField label="D.O.B." type="date" inputName="date_of_birth" register={register} required />
                     </div>
 
-                    {/* <div>
-                        Add gender select field
-                    </div> */}
+                    <div>
+                        <label htmlFor='male'>
+                            Male:
+                            <input {...register("gender")} type="radio" value="male" id="male" />
+                        </label>
+                        <label htmlFor='female'>
+                            Female:
+                            <input {...register("gender")} type="radio" value="female" id="female" />
+                        </label>
+                    </div>
 
                     <div className="dropdown">
                         <label>Current Grade</label> <br />
@@ -157,9 +133,12 @@ const AddStudentForm = () => {
                             <th>Parents Name</th>
                             <th>Contact number</th>
                         </tr>
-                        {tableContent}
+                        <tbody>
+                            {tableContent}
+
+                        </tbody>
                     </table>
-                    <div onClick={() => handleClick("1")}>+ Add Parents</div>
+                    {/* <div onClick={() => handleClick("1")}>+ Add Parents</div> */}
                 </div>
 
                 <div>

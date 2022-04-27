@@ -1,12 +1,11 @@
 import '../css/invoiceTable.css'
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import save from '../images/save.png';
 
 const InvoicePage = () => {
-    const { handleSubmit, register } = useForm();
+    // const { handleSubmit, register } = useForm();
 
     const students = useSelector(state => state.students);
     console.log(students)
@@ -35,7 +34,7 @@ const InvoicePage = () => {
                     <p>Tuition Fee</p>
                 </div>
                 <div className="invoice-column">
-                    <p>Transportation Fee</p>
+                    <p>Trans. Fee</p>
                 </div>
                 <div className="invoice-column">
                     <p>Late Fee</p>
@@ -54,13 +53,13 @@ const InvoicePage = () => {
                             <div className="invoice-column">
                                 <p>A</p>
                             </div>
-                            <div className="invoice-column">
+                            <div className="invoice-column currency">
                                 <p>{student.tuition_fee}</p>
                             </div>
-                            <div className="invoice-column">
-                                <p>3000</p>
+                            <div className="invoice-column currency">
+                                <p>3000.00</p>
                             </div>
-                            <div className="invoice-column">
+                            <div className="invoice-column currency">
                                 <p>
                                     <input id="late_fee" type="text" ref={inputRef} name={`${student.name}_late_fee`} />
                                 </p>
