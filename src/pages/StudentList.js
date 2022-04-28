@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import man from '../images/man.png';
@@ -6,31 +6,39 @@ import '../css/studentList.css';
 import Button from '../components/Button/Button'
 
 const StudentList = () => {
-  const students = useSelector(state => state.students)
-
+  const [students, setStudents] = useState([])
   const [searchInput, setSearchInput] = useState("")
-  // const [filteredStudentsByGrade, setFilteredResultsByGrade] = useState([]);
-  
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue)
+  const [key, setKey] = useState(false)
+
+  const data = useSelector(state => state.students)
+
+  useEffect(() => {
+    setStudents(data)
+    setKey(true)
+  }, [])
+
+  // useEffect(() => {
+  //   if (key) {
+  //   }
     
-    const s = students.filter((student) => {
-        return Object.values(student).join('').toLowerCase().includes(searchInput.toLowerCase())
-      })
-
-      console.log(s)
-    }
-
-  const filterStudentsByGrade = () => (
-    students.filter(student => student.grade === "UKG")
-  )
-
-  // const filterStudentsBySection = () => (
-  //   students.filter(student => (student.)
-  // )
-
-  // console.log(filterStudentsByGrade())
+  // }, [searchInput])
   
+  const searchStudents = (searchValue) => {
+    setSearchInput(searchValue)
+    console.log(searchInput)
+    
+    setStudents(data.filter((student) => {
+      return Object.values(student).join('').toLowerCase().includes(searchInput.toLowerCase())
+    }))
+  
+    console.log(students)
+    
+  }
+
+  const filterStudentsByGrade = () => {
+    setStudents(students.filter(student => student.grade === "UKG"))
+    console.log(students)
+  }
 
   const renderedStudents = students.map(student => (
       <div className="modal">
@@ -61,7 +69,8 @@ const StudentList = () => {
            icon="search"
            type="text"
            placeholder='Search...' 
-           onChange = {(e) => searchItems(e.target.value)}
+           onChange = {(e) => searchStudents(e.target.value)}
+           onKeyUp = {(e) => searchStudents(e.target.value)}
           />
         </div>
       </div>

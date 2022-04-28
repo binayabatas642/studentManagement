@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
-    {id: '1', name: 'Binaya Batas', grade: 'UKG', tuition_fee: 15000, admission_fee: 5000},
-    {id: '2', name: 'John Doe', grade: 'LKG', tuition_fee: 12000, admission_fee: 5000},
-    {id: '3', name: 'John Lenon', grade: 'LKG', tuition_fee: 12000, admission_fee: 5000},
-    {id: '4', name: 'Freddy Mercury', grade: 'LKG', tuition_fee: 12000, admission_fee: 5000},
-    {id: '5', name: 'Mike Shinoda', grade: 'LKG', tuition_fee: 12000, admission_fee: 5000},
+    {id: '1', name: 'Binaya Batas', grade: 'UKG', section: 'A', tuition_fee: 15000, admission_fee: 5000},
+    {id: '2', name: 'John Doe', grade: 'LKG', section: 'A', tuition_fee: 12000, admission_fee: 5000},
+    {id: '3', name: 'John Lenon', grade: 'LKG', section: 'B', tuition_fee: 12000, admission_fee: 5000},
+    {id: '4', name: 'Freddy Mercury', grade: 'LKG', section: 'D', tuition_fee: 12000, admission_fee: 5000},
+    {id: '5', name: 'Mike Shinoda', grade: 'LKG', section: 'C', tuition_fee: 12000, admission_fee: 5000},
 ]
 
 const studentsSlice = createSlice({
