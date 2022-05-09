@@ -5,10 +5,9 @@
 .add-student-form {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-    gap: 15px;
     min-width: 315px;
     font-size: 16px;
+    width: 100%;
 }
 
 .add-student-form > div {
@@ -50,7 +49,7 @@ tr, th, td {
 }
 
 table, th, td {
-    border: 0.2px solid rgb(240, 238, 238);
+    border: 0.2px solid rgb(189, 180, 180);
     border-collapse: collapse;
     /* border-radius: 6px; */
     background-color: #F7F7FA;
@@ -65,3 +64,8 @@ th, td {
     width: 20%;
     text-align: center;
 }
+
+button:active {
+    background-color: rgb(9, 177, 243);
+}
+

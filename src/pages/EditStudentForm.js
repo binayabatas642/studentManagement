@@ -7,7 +7,7 @@ import InputField from '../components/InputField/InputField';
 import Button from '../components/Button/Button';
 import { studentAdded } from '../redux/studentsSlice';
 
-const AddStudentForm = () => {
+const EditStudentForm = () => {
     const { handleSubmit, register, watch, formState: { errors } } = useForm();
 
     const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const AddStudentForm = () => {
     
     const onSubmit = (data) => {
         //e.preventDefault();
+        console.log(data)
         
-        if (data.first_name && data.last_name && data.current_grade) {
-            console.log(data)
+        if (data.firstName && data.lastName && data.currentGrade) {
             dispatch(
                 studentAdded({
                     id: 1,
@@ -58,6 +58,7 @@ const AddStudentForm = () => {
                         style={{border: 'none', width: '100%', outline: 'none', fontSize: '16px', margin: '0px', padding: '0px'}} 
                         type="text"
                         {...register(`${row}s_name`)}
+                        required
                     />
                 </td>
                 <td>
@@ -65,6 +66,7 @@ const AddStudentForm = () => {
                         style={{border: 'none', width: '100%', outline: 'none', fontSize: '16px', margin: '0px', padding: '0px'}} 
                         type="number"
                         {...register(`contact_number_${index}`)}
+                        required
                     />
                 </td>
             </tr>
@@ -77,7 +79,6 @@ const AddStudentForm = () => {
                 <div className="add-student-form">
                     <div>
                         <InputField label="First Name" type="text" inputName="first_name" register={register} required />
-                        {errors.first_name === 'required' && <p>First Name is required.</p>}
                     </div>
 
                     <div>
@@ -122,6 +123,7 @@ const AddStudentForm = () => {
 
                 </div>
                 <br />
+                
 
                 <h2>Parents</h2>
                 <div className="add-student-form">
@@ -133,13 +135,14 @@ const AddStudentForm = () => {
                         </tr>
                         <tbody>
                             {tableContent}
+
                         </tbody>
                     </table>
                     {/* <div onClick={() => handleClick("1")}>+ Add Parents</div> */}
                 </div>
 
                 <div>
-                    <button type="submit">Submit</button>
+                    <Button type="submit" buttonName="Submit" />
                     <Button buttonName="Import CSV" />
                 </div>
             </form>
@@ -147,4 +150,4 @@ const AddStudentForm = () => {
     )
 }
 
-export default AddStudentForm
+export default EditStudentForm

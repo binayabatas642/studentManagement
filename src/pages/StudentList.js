@@ -1,8 +1,9 @@
+import '../css/studentList.css';
+
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import man from '../images/man.png';
-import '../css/studentList.css';
 import Button from '../components/Button/Button'
 
 const StudentList = () => {
@@ -22,7 +23,7 @@ const StudentList = () => {
   //   }
     
   // }, [searchInput])
-  
+
   const searchStudents = (searchValue) => {
     setSearchInput(searchValue)
     console.log(searchInput)
@@ -35,12 +36,12 @@ const StudentList = () => {
     
   }
 
-  const filterStudentsByGrade = () => {
-    setStudents(students.filter(student => student.grade === "UKG"))
+  const filterStudentsByGrade = (grade) => {
+    setStudents(data.filter(student => student.grade === grade))
     console.log(students)
   }
 
-  const renderedStudents = students.map(student => (
+  const renderedStudents = students && students.map(student => (
       <div className="modal">
         <div className="modal-content">
           <div className="modal-img">
@@ -61,7 +62,7 @@ const StudentList = () => {
   ))
 
   return (
-    <>
+    <div>
       <div className="top-section">
         <div className="search-box">
           <input
@@ -73,11 +74,27 @@ const StudentList = () => {
            onKeyUp = {(e) => searchStudents(e.target.value)}
           />
         </div>
+        <div className="filter-section">
+          <div>
+            <button onClick={() => filterStudentsByGrade("UKG")}>UKG</button>
+          </div>
+          <div>
+            <button onClick={() => filterStudentsByGrade("JKG")}>JKG</button>
+          </div>
+          <div>
+            <button onClick={() => filterStudentsByGrade("LKG")}>LKG</button>
+          </div>
+          <div className="add-student-button">
+            <Link to='/student-registration'>
+              <button type="submit">+ Register New Student</button>
+            </Link>
+          </div>
+        </div>
       </div>
       <div className="student-list">
         {renderedStudents}
       </div>
-    </>
+    </div>
   )
 }
 
