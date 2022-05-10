@@ -73,6 +73,7 @@ const PrintPage = () => {
 					<td className="fee-desc">Late Fee</td>
 					<td className="account-data">21212.00</td>
 				</tr>
+			</table>
 		</div>
 	);
 };
